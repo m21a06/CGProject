@@ -33,19 +33,18 @@ public class LoadText : MonoBehaviour
         rowLength = textMessage.Length;
 
         //2次配列を定義
-        className = new string[rowLength, columnLength];
-        roomName = new string[rowLength, columnLength];
-        textWords = new string[rowLength, columnLength];
+        className = new string[rowLength+3, columnLength+1];
+        roomName = new string[rowLength+3, columnLength+1];
+        textWords = new string[rowLength+3, columnLength+1];
         
         int t1 = 0, t2 = 0, t3 = 0, t4 = 0, t5 = 0;
         for(int i = 0; i < rowLength; i++) {
 
-            string[] tempWords = textMessage[i].Split('\t'); //textMessageをカンマごとに分けたものを一時的にtempWordsに代入
+            string[] tempWords = textMessage[i].Split(' ', '\t'); //textMessageをカンマごとに分けたものを一時的にtempWordsに代入
             int time  = 0;
             int.TryParse(tempWords[0], out time);
-            time -= 1;
 
-            switch (time+1) {
+            switch (time) {
                 case 1:
                     className[time,t1] = tempWords[1];
                     roomName[time,t1++] = tempWords[2];
