@@ -12,10 +12,14 @@ public class LoadImg : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
+        int num = PlayerPrefs.GetInt("ClassNum");
+        ImageGetter(num);
     }
 
     // Update is called once per frame
-    void Update(){}
+    void Update(){
+        
+    }
 
     public void ImageGetter(int classtime)
     {

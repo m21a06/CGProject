@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using System.IO;
 
 public class LoadText : MonoBehaviour
@@ -17,8 +18,47 @@ public class LoadText : MonoBehaviour
 
     private void Start() {
 
+        string dayOfWeekJa = "thu";
+        switch (DateTime.Now.DayOfWeek)
+        {
+            case DayOfWeek.Monday:
+                dayOfWeekJa = "mon";
+                break;
+            case DayOfWeek.Tuesday:
+                dayOfWeekJa = "tue";
+                break;
+            case DayOfWeek.Wednesday:
+                dayOfWeekJa = "wed";
+                break;
+            case DayOfWeek.Thursday:
+                dayOfWeekJa = "thu";
+                break;
+            case DayOfWeek.Friday:
+                dayOfWeekJa = "fri";
+                break;
+            case DayOfWeek.Saturday:
+                dayOfWeekJa = "sat";
+                break;
+            default:
+                Debug.Log("休みです。");
+                break;
+        }
+
+        dayOfWeekJa = "M_" + dayOfWeekJa;
+        Load_Text(dayOfWeekJa);
+
+        //int num = PlayerPrefs.GetInt("ClassNum");
+        //Debug.Log(ClassGetter(num,1));
     }
     
+    public static void Init_Array(){
+        for(int i = 0; i < rowLength+3; i++)
+            for(int j = 0; j < columnLength-1; j++){
+                className[i, j] = null;
+                roomName[i, j] = null;
+            }
+    }
+
     public static void Load_Text(string msg){
 
         TextAsset textasset = new TextAsset(); //テキストファイルのデータを取得するインスタンスを作成
@@ -36,6 +76,7 @@ public class LoadText : MonoBehaviour
         className = new string[rowLength+3, columnLength+1];
         roomName = new string[rowLength+3, columnLength+1];
         textWords = new string[rowLength+3, columnLength+1];
+        Init_Array();
         
         int t1 = 0, t2 = 0, t3 = 0, t4 = 0, t5 = 0;
         for(int i = 0; i < rowLength; i++) {

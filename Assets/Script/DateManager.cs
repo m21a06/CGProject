@@ -14,21 +14,18 @@ public class DateManager : MonoBehaviour
 {
 
     // 日本語の曜日を取得
-    string dayOfWeekJa = "";
+    static string dayOfWeekJa = "";
     // Use this for initialization
     private void Start()
     {
-        string youbi = GetDayOfTheWeek("20220110");
+        string youbi = GetDayOfTheWeek();
  
         Debug.Log(youbi);
     }
  
     // 日付から曜日を取得する
-    private string GetDayOfTheWeek(string date)
+    public static string GetDayOfTheWeek()
     {
-        // DateTimeを生成
- 
- 
         switch (DateTime.Now.DayOfWeek)
         {
             case DayOfWeek.Sunday:
@@ -54,9 +51,6 @@ public class DateManager : MonoBehaviour
                 break;
         }
  
-        // 曜日 (英語)
-
- 
         // 戻り値: 曜日 (日本語)
         return dayOfWeekJa;
     }
@@ -65,12 +59,9 @@ public class DateManager : MonoBehaviour
 
     // Update is called once per frame
 	void Update () {
-
-		if(Input.GetMouseButtonDown(0)){
-
+		//if(Input.GetMouseButtonDown(0)){
 			text.text = dayOfWeekJa;
-		
-	}
-}
+	    //}
+    }
 
 }
