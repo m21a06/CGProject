@@ -18,7 +18,7 @@ public class DateManager : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        string youbi = GetDayOfTheWeek("20220401");
+        string youbi = GetDayOfTheWeek("20220110");
  
         Debug.Log(youbi);
     }
@@ -27,10 +27,9 @@ public class DateManager : MonoBehaviour
     private string GetDayOfTheWeek(string date)
     {
         // DateTimeを生成
-        DateTime dateTime = DateTime.ParseExact(date, "yyyyMMdd", null);
  
  
-        switch (dateTime.DayOfWeek)
+        switch (DateTime.Now.DayOfWeek)
         {
             case DayOfWeek.Sunday:
                 dayOfWeekJa = "休み";
@@ -56,8 +55,7 @@ public class DateManager : MonoBehaviour
         }
  
         // 曜日 (英語)
-        Debug.Log(dateTime.ToString("dddd"));
-        Debug.Log(dateTime.ToString("ddd"));
+
  
         // 戻り値: 曜日 (日本語)
         return dayOfWeekJa;
